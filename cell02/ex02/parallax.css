@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.parallax {
+    height: 100vh;
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    font-size: 2em;
+    text-align: center;
+}
+
+.parallax1 {
+    background-image: url('https://i.pinimg.com/736x/19/93/82/199382704780384262ec652f48201f8c.jpg'); 
+}
+
+.parallax2 {
+    background-image: url('https://w0.peakpx.com/wallpaper/747/375/HD-wallpaper-bridge-autumn-awesome-beauty-forest-nature-path-view-thumbnail.jpg');
+}
+
+.content {
+    background-color: black;
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+}
