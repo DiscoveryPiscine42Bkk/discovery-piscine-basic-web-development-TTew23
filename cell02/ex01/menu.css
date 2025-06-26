@@ -1,14 +1,14 @@
-@import url("https://fonts.googleleapis.com/css2?family=Popins");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 * {
     padding: 0;
     margin: 0;
-    font-family: "Poppins", monospace;
+    font-family: "Poppins", sans-serif;
 }
 
 ul {
     list-style: none;
-    background-color: rgb(104, 42, 249);
+    background-color: rgb(0, 0, 0);
 }
 
 ul li {
@@ -19,24 +19,24 @@ ul li {
 ul li a {
     display: block;
     padding: 20px 25px;
-    color:#fff;
+    color: #fff;
     text-decoration: none;
     text-align: center;
     font-size: 20px;
 }
 
 ul li ul.dropdown {
-    width: 100%
-    background: #8c52ff;
-    position: absolute
+    width: 100%;
+    background: #010101;
+    position: absolute;
     z-index: 999;
     display: none;
 }
 
 ul li a:hover {
-    background: #5e28cc;
+    background: #53b6dac3;
 }
 
-ul li:hover ul.dropdown{
+ul li:hover ul.dropdown {
     display: block;
 }
