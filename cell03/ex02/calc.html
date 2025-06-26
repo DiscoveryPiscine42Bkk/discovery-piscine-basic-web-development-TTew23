@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+        }
+        input, select {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        #try {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="left" placeholder="Left number">
+    <select id="operator">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+    </select>
+    <input type="text" id="right" placeholder="Right number">
+    <input type="submit" id="try" value="Try me!" onclick="calculate()">
+
+    <script>
+        function isPositiveInteger(value) {
+            const num = Number(value);
+            return Number.isInteger(num) && num >= 0;
+        }
+
+        function calculate() {
+            const left = document.getElementById("left").value.trim();
+            const right = document.getElementById("right").value.trim();
+            const op = document.getElementById("operator").value;
+
+            if (!isPositiveInteger(left) || !isPositiveInteger(right)) {
+                alert("Error :(");
+                return;
+            }
+
+            const a = parseInt(left);
+            const b = parseInt(right);
+
+            if ((op === '/' || op === '%') && b === 0) {
+                alert("It's over 9000!");
+                console.log("It's over 9000!");
+                return;
+            }
+
+            let result;
+            switch (op) {
+                case '+': result = a + b; break;
+                case '-': result = a - b; break;
+                case '*': result = a * b; break;
+                case '/': result = a / b; break;
+                case '%': result = a % b; break;
+            }
+
+            alert("Result: " + result);
+            console.log("Result:", result);
+        }
+
+        // Alert every 30 seconds
+        setInterval(() => {
+            alert("Please, use me...");
+        }, 30000);
+    </script>
+</body>
+</html>

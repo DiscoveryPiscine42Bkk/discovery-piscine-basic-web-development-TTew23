@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To Do jQuery</title>
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <style>
+    #ft_list {
+      display: flex;
+      flex-direction: column-reverse;
+      gap: 10px;
+      align-items: center;
+    }
+    .todo {
+      background: #eee;
+      padding: 10px;
+      width: 200px;
+      text-align: center;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <button id="new">New</button>
+  <div id="ft_list"></div>
+
+  <script>
+    function saveTodos() {
+      let todos = [];
+      $('#ft_list .todo').each(function () {
+        todos.push($(this).text());
+      });
+      document.cookie = "todos=" + encodeURIComponent(JSON.stringify(todos)) + "; path=/";
+    }
+
+    function addTodo(text) {
+      const div = $('<div class="todo"></div>').text(text);
+      div.on('click', function () {
+        if (confirm("Delete this task?")) {
+          $(this).remove();
+          saveTodos();
+        }
+      });
+      $('#ft_list').append(div);
+      saveTodos();
+    }
+
+    function loadTodos() {
+      const cookies = document.cookie.split('; ');
+      const todoCookie = cookies.find(c => c.startsWith('todos='));
+      if (todoCookie) {
+        try {
+          const data = JSON.parse(decodeURIComponent(todoCookie.split('=')[1]));
+          data.forEach(addTodo);
+        } catch (e) {
+          console.error("Invalid cookie data");
+        }
+      }
+    }
+
+    $('#new').on('click', function () {
+      const task = prompt("Enter new task:");
+      if (task && task.trim() !== "") {
+        addTodo(task.trim());
+      }
+    });
+
+    $(document).ready(loadTodos);
+  </script>
+</body>
+</html>
